@@ -8,38 +8,19 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest",
+    "test": "jest --watchAll",
     "lint": "expo lint"
   },
   "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>/node_modules/jest-enzyme/lib/index.js"
-    ],
     "preset": "jest-expo",
+    "setupFiles": ["<rootDir>/jest.setup.js"],
     "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
+      "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@sentry/react-native|native-base|react-native-svg)"
     ],
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "!node_modules/**/*",
-      "!build/**",
-      "!node_modules/**/**/*",
-      "!coverage/**/*",
-      "!__tests__/**/*",
-      "src/pages/**/*.{ts,tsx,js,jsx}",
-      "!src/pages/index.ts"
-    ],
-    "testMatch": [
-      "<rootDir>/src/pages/**/__tests__/**/*.steps.{ts,tsx,js,jsx}"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx"],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
@@ -71,17 +52,18 @@
     "react-native-safe-area-context": "4.10.5",
     "react-native-screens": "3.31.1",
     "react-native-web": "~0.19.10",
-    "ts-jest": "^29.2.3"
+    "ts-jest": "^29.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
-    "@testing-library/react-native": "^12.5.2",
+    "@testing-library/react-native": "^12.5.3",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.2.45",
     "@types/react-test-renderer": "^18.0.7",
     "enzyme": "^3.11.0",
-    "jest": "^29.4.0",
-    "jest-expo": "~51.0.3",
+    "jest": "^29.7.0",
+    "jest-cucumber": "^4.5.0",
+    "jest-expo": "^51.0.3",
     "react-test-renderer": "^18.2.0",
     "typescript": "~5.3.3"
   },

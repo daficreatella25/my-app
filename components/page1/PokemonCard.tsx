@@ -14,7 +14,6 @@ interface Props {
 
 export const PokemonCard = (props:Props): JSX.Element => {
   const item = props.data
-  console.log(props.data)
 
   function extractPokemonNumber(url: string) {
     // Use a regular expression to match the number at the end of the URL

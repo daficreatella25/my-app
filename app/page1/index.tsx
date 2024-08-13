@@ -38,7 +38,7 @@ export default function Page1Screen() {
   const handlePage = (selectedPage:number) => setPage(selectedPage-1)
 
   const renderItem: ListRenderItem<pokemonObj> = ({ item, index }) => (
-    <PokemonCard data={item} id={(index + 1) + page + (page * LIMIT)} />
+    <PokemonCard  data-testid="pokemon-item" data={item} id={(index + 1) + page + (page * LIMIT)} />
   );
 
   useEffect(()=>{
@@ -66,7 +66,7 @@ export default function Page1Screen() {
   }
 
   return (
-    <SafeAreaView style={[styles.container, globalStyles.screen]}>
+    <SafeAreaView data-testid="product-list-view" style={[styles.container, globalStyles.screen]}>
       <TextInput 
           style={styles.textInputContainer} placeholder="Search" onChangeText={setQuery} 
           value={query}/>

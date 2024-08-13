@@ -18,7 +18,11 @@ export const PokemonDetails = (props: Props): JSX.Element => {
     const pokemonDetail = data as PokemonDetailObj;
 
     if (isLoading) {
-        return <Text>Loading...</Text>;
+        return (
+            <SafeAreaView style={[globalStyles.screen, styles.container]}>
+                <Text>Loading...</Text>
+            </SafeAreaView>
+        );
     }
 
     return (
