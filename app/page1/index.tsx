@@ -26,7 +26,6 @@ export default function Page1Screen() {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-    isLoading,
   } = useInfinitePokemon({ offset: page + (page * LIMIT), limit: LIMIT, query: debouncedQuery });
 
   const loadMore = () => {
@@ -57,10 +56,12 @@ export default function Page1Screen() {
 
     if(singlePokemon){
       pokemonDataFlat = [{
-        name: single.name
+        name: single.name,
+        sprites: {
+          front_default: single.sprites?.front_default
+        }
       }]
     }
-
   }
 
   return (

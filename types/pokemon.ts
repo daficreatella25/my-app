@@ -8,6 +8,9 @@ export interface pokemonDto {
 
 export interface pokemonObj {
   name: string;
+  sprites?: {
+    front_default: string
+  }
 }
 
 export type pokemonRespObj = withPagination<pokemonObj>;

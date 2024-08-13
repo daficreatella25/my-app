@@ -23,10 +23,18 @@ export const PokemonCard = (props:Props): JSX.Element => {
           params: {id: props.id}
           }}>
           <View key={item.name}>
-            <Image
-              source={{ uri: getPokemonImage(props.id) }}
-              style={styles.pokemonCardImage}
-              />
+            {
+              props.data?.sprites?.front_default ? 
+                <Image
+                  source={{ uri: item.sprites?.front_default }}
+                  style={styles.pokemonCardImage}
+                  />
+              :
+                <Image
+                  source={{ uri: getPokemonImage(props.id) }}
+                  style={styles.pokemonCardImage}
+                  />
+            }
 
             <Text style={styles.pokemonCardText}>{item.name}</Text>
 
