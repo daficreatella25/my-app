@@ -19,7 +19,7 @@ export const PokemonCard = (props:Props): JSX.Element => {
     <View style={styles.container}>
       <View key={item.name} style={styles.pokemonCard}>
         <Link href={{
-          pathname: '/details/[id]',
+          pathname: `/page1/details/[id]`,
           params: {id: props.id}
           }}>
           <View key={item.name}>

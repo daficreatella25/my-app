@@ -8,6 +8,7 @@ import { COLORS } from "@/styles/colors";
 import PokemonCard from "@/components/page1/PokemonCard";
 import { pokemonObj, pokemonRespObj } from "@/types/pokemon";
 import { SCREEN_WIDTH } from "@/config/constant";
+import { useRootNavigationState } from "expo-router";
 
 const LIMIT = 20;
 const PAGE_OPTION = [1,2,3,4,5,6,7,8,9]
@@ -18,6 +19,9 @@ export default function Page1Screen() {
   const [page, setPage] = useState(0);
   const [query, setQuery] = useState("")
   const [debouncedQuery, setDebouncedQuery] = useState("")
+
+  const rootState = useRootNavigationState();
+  console.log(rootState)
 
   const {data:singlePokemon} = useGetPokemon(debouncedQuery)
   

@@ -31,8 +31,6 @@ function RootLayoutNav() {
     <QueryClientProvider client={queryClient}>
       <Stack>
         <Stack.Screen name="page1" options={{ headerShown: false }} />
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-        <Stack.Screen name="page2" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" options={{ title: "Oops!" }} />
       </Stack>
     </QueryClientProvider>
