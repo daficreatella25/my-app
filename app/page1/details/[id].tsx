@@ -1,9 +1,10 @@
 import { useGetPokemonAbility } from '@/hooks/api/abilities/useGetPokemonAbility';
 import { PokemonServices } from '@/services/pokemon/pokemon.services';
+import { globalStyles } from '@/styles/global';
 import { abilitesObj } from '@/types/pokemonAbilites';
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const pokemonServices = new PokemonServices();
@@ -21,7 +22,7 @@ export const PokemonDetails = (props:Props): JSX.Element => {
     const pokemonDetail = data as abilitesObj
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={[globalStyles.screen, styles.container]}>
             {
                 pokemonDetail.abilities.map((item)=> (
                     <React.Fragment key={item.ability.url}>
@@ -33,4 +34,8 @@ export const PokemonDetails = (props:Props): JSX.Element => {
     );
 };
 
-export default PokemonDetails;
+const styles = StyleSheet.create({
+    container:{
+        flex: 1
+    }
+})

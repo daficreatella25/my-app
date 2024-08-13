@@ -7,7 +7,6 @@ export default function Page2Screen() {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Page 2</Text>
-      <Link href="/">Go back to Home</Link>
     </SafeAreaView>
   );
 }
