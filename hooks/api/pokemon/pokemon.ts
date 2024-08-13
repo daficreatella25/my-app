@@ -1,24 +1,24 @@
-import { ENDPOINT } from "@/services/main"
+import { ENDPOINT, queryClient } from "@/services/main"
 import { pokemonSerivces } from "@/services/pokemon/pokemon.services"
 import { pokemonDto, pokemonRespObj } from "@/types/pokemon"
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
 
-export const useGetPokemon = (param: pokemonDto) => {
+export const useGetPokemon = (query: string) => {
     return useQuery({
-        queryFn: () => pokemonSerivces.getPokemonByPage(param),
-        queryKey: [param, ENDPOINT.pokemon]
+        queryFn: () => pokemonSerivces.getPokemonByPage({query: query, limit: 1, offset:0}),
+        queryKey: [query, ENDPOINT.pokemon],
+        enabled: query ? true : false
     })
 }
 
-
-
 export const useInfinitePokemon = (initialParam: pokemonDto) => {
     return useInfiniteQuery({
-      queryKey: [ENDPOINT.pokemon, 'infinite'],
+      queryKey: [ENDPOINT.pokemon, initialParam],
       queryFn: ({ pageParam }) => {
         const param: pokemonDto = {
           offset: (pageParam as pokemonDto)?.offset ?? initialParam.offset * initialParam.limit,
-          limit: (pageParam as pokemonDto)?.limit ?? initialParam.limit
+          limit: (pageParam as pokemonDto)?.limit ?? initialParam.limit,
+          query: initialParam.query
         };
         return pokemonSerivces.getPokemonByPage(param);
       },

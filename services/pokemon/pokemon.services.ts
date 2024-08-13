@@ -4,8 +4,11 @@ import { abilitesObj } from "@/types/pokemonAbilites";
 
 export class PokemonServices {
   async getPokemonByPage(param: pokemonDto) {
-    const endpoint = `${ENDPOINT.pokemon}?offset=${param.offset}&limit=${param.limit}`;
-    const res = await apiInstance.get<pokemonRespObj, unknown>(endpoint);
+    let endpoint = `${ENDPOINT.pokemon}?offset=${param.offset}&limit=${param.limit}`;
+    if(param.query){
+      endpoint = `${ENDPOINT.pokemon}/${param.query}`
+    }
+    const res = await apiInstance.get<pokemonRespObj | pokemonObj, unknown>(endpoint);
 
     if (!res.ok) throw res;
 
