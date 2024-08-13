@@ -4,6 +4,7 @@ import { abilitesObj } from "@/types/pokemonAbilites";
 
 export class PokemonServices {
   async getPokemonByPage(param: pokemonDto) {
+    console.log(param)
     const endpoint = `${ENDPOINT.pokemon}?offset=${param.offset}&limit=${param.limit}`;
     const res = await apiInstance.get<pokemonRespObj, unknown>(endpoint);
 
@@ -23,3 +24,5 @@ export class PokemonServices {
     return res.data
   }
 }
+
+export const pokemonSerivces = new PokemonServices()

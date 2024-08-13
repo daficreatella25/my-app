@@ -15,7 +15,7 @@ export const PokemonDetails = (props:Props): JSX.Element => {
     const { data, isLoading } = useGetPokemonAbility(id as string)
 
     if(isLoading){
-        <></>
+        return <></>
     }
 
     const pokemonDetail = data as abilitesObj
