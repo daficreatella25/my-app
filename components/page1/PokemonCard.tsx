@@ -14,24 +14,40 @@ interface Props {
 
 export const PokemonCard = (props:Props): JSX.Element => {
   const item = props.data
+  console.log(props.data)
+
+  function extractPokemonNumber(url: string) {
+    // Use a regular expression to match the number at the end of the URL
+    const match = url.match(/\/(\d+)\.png$/);
+    
+    // If a match is found, return the number as an integer
+    if (match && match[1]) {
+      return parseInt(match[1], 10);
+    }
+    
+    // If no match is found, return null
+    return null;
+  }
+
+  const imageUrl = props.data?.sprites?.front_default ? props.data?.sprites?.front_default : getPokemonImage(props.id)
 
   return (
     <View style={styles.container}>
       <View key={item.name} style={styles.pokemonCard}>
         <Link href={{
           pathname: `/page1/details/[id]`,
-          params: {id: props.id}
+          params: {id: extractPokemonNumber(imageUrl)}
           }}>
           <View key={item.name}>
             {
               props.data?.sprites?.front_default ? 
                 <Image
-                  source={{ uri: item.sprites?.front_default }}
+                  source={{ uri: imageUrl }}
                   style={styles.pokemonCardImage}
                   />
               :
                 <Image
-                  source={{ uri: getPokemonImage(props.id) }}
+                  source={{ uri: imageUrl }}
                   style={styles.pokemonCardImage}
                   />
             }

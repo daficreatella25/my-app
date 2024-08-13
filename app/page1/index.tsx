@@ -20,9 +20,6 @@ export default function Page1Screen() {
   const [query, setQuery] = useState("")
   const [debouncedQuery, setDebouncedQuery] = useState("")
 
-  const rootState = useRootNavigationState();
-  console.log(rootState)
-
   const {data:singlePokemon} = useGetPokemon(debouncedQuery)
   
   const {
