@@ -3,6 +3,7 @@ import { withPagination } from "./general";
 export interface pokemonDto {
   offset: number;
   limit: number;
+  query?:string
 }
 
 export interface pokemonObj {
